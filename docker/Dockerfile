@@ -10,8 +10,8 @@ RUN sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoe
 RUN cd /tmp; git clone https://aur.archlinux.org/libguestfs.git && \
   git clone https://aur.archlinux.org/hivex.git && \
   chown -R rock64 /tmp/hivex /tmp/libguestfs && \
-  su - rock64 -c "cd /tmp/hivex; makepkg -cs --noconfirm" && pacman -U --noconfirm hivex/hivex-*.xz && \
-  su - rock64 -c "cd /tmp/libguestfs; makepkg -cs --noconfirm" && pacman -U --noconfirm libguestfs/libguestfs-*.xz && \
+  su - rock64 -c "cd /tmp/hivex; makepkg -cs --noconfirm" && pacman -U --noconfirm hivex/hivex-*.zst && \
+  su - rock64 -c "cd /tmp/libguestfs; makepkg -cs --noconfirm" && pacman -U --noconfirm libguestfs/libguestfs-*.zst && \
   rm -rf hivex libguestfs /var/cache/pacman/pkg/
 
 # Downgrade to previous versions (see issue #3 and README.md)
